@@ -1,0 +1,206 @@
+
+
+
+body{
+    margin:0;
+    height:100vh;
+/*    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+ */   background:#111;
+    font-family:tahoma;
+}
+
+header {
+    width: 0;
+    border-bottom: green solid 2px;
+    height: 30vh;
+    margin: auto;
+    animation: openHeader 1s ease forwards 3s;
+}
+
+@keyframes openHeader {
+    to{ width: 70%; }
+}
+
+.container{
+    position:relative;
+    width: 100%;   /* عرض مشخص */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    animation: moveTop 0.9s forwards 2.5s;
+}
+
+/* عکس */
+.profile-img{
+    width: 150px;
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    opacity: 0;
+    margin: auto;
+    animation:
+        fadeIn 1s forwards 0.5s,
+        moveLeft1 1.5s forwards 1s,
+        moveLeft2 0.9s forwards 3.1s;
+    z-index: 1;
+}
+
+/* اسم */
+.name{
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-50%);
+    font-size: 38px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    opacity: 0;
+    animation:
+        moveRight1 1.5s forwards 1s,
+        moveRight2 0.9s forwards 3.1s;
+    text-align: center;
+}
+
+/* انیمیشن‌ها */
+
+@keyframes fadeIn{
+    to{opacity:1;}
+}
+
+@keyframes moveLeft1{
+    to{transform: translateY(-50%) translateX(-100px);}
+}
+
+@keyframes moveLeft2{
+    to{transform: translateY(-50%) translateX(-300px);}
+}
+
+@keyframes moveRight1{
+    to{
+        opacity:1;
+        transform: translateY(-50%) translateX(80px);
+    }
+}
+
+@keyframes moveRight2{
+    to{
+        opacity:1;
+        transform: translateY(-50%) translateX(280px);
+    }
+}
+
+
+@keyframes moveTop{
+    to{transform:translateY(-35vh)}
+}
+
+
+
+@keyframes start_main{
+    to{
+        transform:translateY(-50px);
+        opacity: 1;
+    }
+}
+
+#message {
+    width: 70%;
+    text-align: center;
+    margin: 40px auto;
+    color: white;
+    font-size: 20px;
+}
+
+main {
+    margin: 100px auto;
+    transform: translateY(-50px);
+    opacity: 0;
+    width: 70%;
+    animation: start_main 1s ease forwards 4s;
+}
+
+.accordion {
+    margin: 10px auto;
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    justify-content: space-between;
+    border-left: 3px solid green;
+    background-color: #2c2c2c;
+    color: #efe;
+    cursor: pointer;
+    padding: 15px;
+    width: 90%;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+
+    transition: 
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        background-color 0.3s ease;
+}
+
+.accordion::before {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+/* وقتی باز شد */
+.accordion.active::before {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.accordion:hover {
+    background-color: #3a3a3a;
+}
+
+.panel {
+    color: white;
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    padding: 0 15px;
+    background-color: #1a1a1a;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    border-left: 3px solid #242;
+    border-radius: 0 0 8px 8px;
+}
+.panel p {
+    margin: 15px 0;
+}
+
+li {
+    line-height: 1.5;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+li img {
+    width: 40px;
+    margin: 0;
+}
+
+a { text-decoration: none; color: white; }
